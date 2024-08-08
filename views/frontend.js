@@ -7,7 +7,7 @@ function catalogPage(){
 }
 
 function mainPage() {
-    location.assign("./")
+    location.assign("./index.html")
 }
 
 desplegableActive = false

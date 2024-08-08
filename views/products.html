@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Catalogo Productos</title>
 </head>
-<body>
+<body onload="getProducts()">
     <ul class="navBar">
         <li>
             <button class="navBarButton MainPageButton" onclick="mainPage()">
@@ -36,118 +36,10 @@
             </form>
         </li>
     </ul>
-    <div class="main">
+    <div class="main" id="productsContainer">
         <div class="containerProduct">
             <div class="product">
-                <img src="descarga.jpg" class="img">
-                <h3 class="pr">Nombre Producto</h3>
-                <h3 class="pr">Precio</h3>
-            </div>
-            <div class="back">
-                <h3 class="pr">Nombre Producto</h3>
-                <h5>
-                    Descripción:
-                </h5>
-                <p>
-                    Descripción detallada del producto
-                </p>
-                <h3 class="pr">Precio: $</h3>
-                <span>unidades disponibles: </span>
-            </div>
-        </div>
-        <div class="containerProduct">
-            <div class="product">
-                <img src="descarga.jpg" class="img">
-                <h3 class="pr">Nombre Producto</h3>
-                <h3 class="pr">Precio</h3>
-            </div>
-            <div class="back">
-                <h3 class="pr">Nombre Producto</h3>
-                <h5>
-                    Descripción:
-                </h5>
-                <p>
-                    Descripción detallada del producto
-                </p>
-                <h3 class="pr">Precio: $</h3>
-                <span>unidades disponibles: </span>
-            </div>
-        </div>
-        <div class="containerProduct">
-            <div class="product">
-                <img src="descarga.jpg" class="img">
-                <h3 class="pr">Nombre Producto</h3>
-                <h3 class="pr">Precio</h3>
-            </div>
-            <div class="back">
-                <h3 class="pr">Nombre Producto</h3>
-                <h5>
-                    Descripción:
-                </h5>
-                <p>
-                    Descripción detallada del producto
-                </p>
-                <h3 class="pr">Precio: $</h3>
-                <span>unidades disponibles: </span>
-            </div>
-        </div>
-        <div class="containerProduct">
-            <div class="product">
-                <img src="descarga.jpg" class="img">
-                <h3 class="pr">Nombre Producto</h3>
-                <h3 class="pr">Precio</h3>
-            </div>
-            <div class="back">
-                <h3 class="pr">Nombre Producto</h3>
-                <h5>
-                    Descripción:
-                </h5>
-                <p>
-                    Descripción detallada del producto
-                </p>
-                <h3 class="pr">Precio: $</h3>
-                <span>unidades disponibles: </span>
-            </div>
-        </div>
-        <div class="containerProduct">
-            <div class="product">
-                <img src="descarga.jpg" class="img">
-                <h3 class="pr">Nombre Producto</h3>
-                <h3 class="pr">Precio</h3>
-            </div>
-            <div class="back">
-                <h3 class="pr">Nombre Producto</h3>
-                <h5>
-                    Descripción:
-                </h5>
-                <p>
-                    Descripción detallada del producto
-                </p>
-                <h3 class="pr">Precio: $</h3>
-                <span>unidades disponibles: </span>
-            </div>
-        </div>
-        <div class="containerProduct">
-            <div class="product">
-                <img src="descarga.jpg" class="img">
-                <h3 class="pr">Nombre Producto</h3>
-                <h3 class="pr">Precio</h3>
-            </div>
-            <div class="back">
-                <h3 class="pr">Nombre Producto</h3>
-                <h5>
-                    Descripción:
-                </h5>
-                <p>
-                    Descripción detallada del producto
-                </p>
-                <h3 class="pr">Precio: $</h3>
-                <span>unidades disponibles: </span>
-            </div>
-        </div>
-        <div class="containerProduct">
-            <div class="product">
-                <img src="descarga.jpg" class="img">
+                <img src="../Assets/descarga.jpg" class="img">
                 <h3 class="pr">Nombre Producto</h3>
                 <h3 class="pr">Precio</h3>
             </div>
@@ -189,5 +81,6 @@
         </div>
     </footer>
 </body>
+<script src="functions.js"></script>
 <script src="frontend.js"></script>
 </html>

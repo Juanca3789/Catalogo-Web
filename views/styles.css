@@ -210,11 +210,19 @@ li{
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.back h5, p{
+.back h5{
     margin: 5px;
     margin-left: 0%;
+}
+
+.back p{
+    margin: 5px;
+    margin-left: 0px;
+    max-width: 100%;
 }
 
 .img{
