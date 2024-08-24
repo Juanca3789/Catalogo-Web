@@ -1,5 +1,4 @@
 const backend_url = "http://localhost/catalogo/Backend/"
-let isAdmin = false
 
 function base64ToBlob(base64, mimeType) {
     const byteCharacters = atob(base64);
@@ -60,18 +59,41 @@ function addFrontendCard(element){
 
 async function getProducts() {
     let callFunction = new FormData();
-    callFunction.append("call", "true");
-    let response = await fetch(
-        backend_url + "Controllers/Productos/getProducts.php",
-        {
-            method: "POST",
-            mode: "cors",
-            cache: "no-cache",
-            body: callFunction
-        }
-    );
+    const parameters = new URLSearchParams(window.location.search)
+    const pattern = parameters.get("aBuscar");
+    let response = null;
+    if(pattern == null){
+        const products = document.getElementById("productsButton");
+        products.disabled = true;
+        callFunction.append("call", "true");
+        response = await fetch(
+            backend_url + "Controllers/Productos/getProducts.php",
+            {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: callFunction
+            }
+        );
+    }
+    else{
+        callFunction.append("aBuscar", pattern);
+        response = await fetch(
+            backend_url + "Controllers/Productos/searchProducts.php",
+            {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: callFunction
+            }
+        )
+        const main = document.getElementById("textHeader");
+        const head = document.createElement("h2");
+        head.className = "searcHeader";
+        head.textContent = "Resultados para la busqueda: '" + pattern + "'";
+        main.appendChild(head);
+    }
     json = await response.json()
-    //console.log(json)
     json.forEach(element => {
         addFrontendCard(element)
     });

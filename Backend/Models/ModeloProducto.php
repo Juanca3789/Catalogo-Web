@@ -37,5 +37,16 @@
             $result = $result->fetch_object();
             return $result;
         }
+        public function searchProducts(string $pattern){
+            $result = $this->connection->query("CALL searchProducts('{$pattern}')");
+            if($result != false){
+                $arr = null;
+                while($obj = $result->fetch_object()){
+                    $arr[] = $obj;
+                }
+                return $arr;
+            }
+            return $result;
+        }
     }
 ?>

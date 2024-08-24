@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["rol"]) || $_SESSION["rol"] != "SELLER"){
+        header("Location: /catalogo/views/index.html");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -91,5 +97,5 @@
         </div>
     </footer>
 </body>
-<script src="privateFunctions.js"></script>
+<script src="privateFunctions.php"></script>
 </html>

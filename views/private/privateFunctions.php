@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["rol"]) || $_SESSION["rol"] != "SELLER"){
+        header("Location: /catalogo/views/index.html");
+    }
+
+    header('Content-Type: application/javascript');
+?>
+
 let base64Selected = null
 
 function base64ToBlob(base64, mimeType) {
@@ -186,9 +195,22 @@ else if(mode == "edit"){
         })
     }
     else{
-        window.location.assign(myUrl + "edit.html?mode=add")
+        window.location.assign(myUrl + "edit.php?mode=add")
     }
 }
 else{
-    window.location.assign(myUrl + "edit.html?mode=add")
+    window.location.assign(myUrl + "edit.php?mode=add")
 }
+
+function usPage() {
+    location.assign("./us.php")
+}
+
+function catalogPage(){
+    location.assign("./products.php")
+}
+
+function mainPage() {
+    location.assign("./index.php")
+}
+
