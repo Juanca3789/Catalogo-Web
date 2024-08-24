@@ -61,14 +61,14 @@
                     <h3 class="pr" id="previewName">Nombre Producto</h3>
                     <h3 class="pr" id="previewPrecio">Precio</h3>
                     <label for="file-upload" class="fakeFile">Seleccionar Imagen</label>
-                    <input id="file-upload" class="trueFile" type="file" accept="image/*" required>
+                    <input id="file-upload" class="trueFile" type="file" accept="image/*" name="img">
                 </section>
             </section>
             <section class="sectionInput">
-                <input id="name" type="text" placeholder="Nombre" class="formEditText" required>
-                <input id="precio" type="number" placeholder="Precio" pattern="[0-9]*" class="formEditText" required>
-                <input id="desc" type="text" placeholder="Descripción" class="formEditText" required>
-                <button type="submit" class="sendButton">Confirmar Cambios</button>
+                <input name="nombre" id="name" type="text" placeholder="Nombre" class="formEditText" autocomplete="off" required>
+                <input name="precio" id="precio" type="number" placeholder="Precio" pattern="[0-9]*" class="formEditText" required>
+                <input name="descripcion" id="desc" type="text" placeholder="Descripción" class="formEditText" autocomplete="off" required>
+                <button id="submit" type="submit" class="sendButton">Confirmar Cambios</button>
             </section>
         </form>
     </div>
@@ -91,6 +91,5 @@
         </div>
     </footer>
 </body>
-<script src="../functions.js"></script>
 <script src="privateFunctions.js"></script>
 </html>

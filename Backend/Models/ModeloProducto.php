@@ -21,9 +21,21 @@
         public function addProduct(string $nombre, string $descripcion, string $precio, $imagen) {
             $result = $this->connection->query("CALL addProduct('{$nombre}','{$descripcion}','{$precio}','{$imagen}')");
             if($result){
-                return "Producto Añadido Exitosamente";
+                return "Producto Aniadido Exitosamente";
             }
             return "Ha ocurrido un error";
+        }
+        public function editProduct(int $id, string $nombre, string $descripcion, string $precio, $imagen) {
+            $result = $this->connection->query("CALL editProduct('{$id}','{$nombre}','{$descripcion}','{$precio}','{$imagen}')");
+            if($result){
+                return "Producto editado correctamente";
+            }
+            return "Ha ocurrido un error";
+        }
+        public function selectProduct(int $id) {
+            $result = $this->connection->query("CALL selectProduct('{$id}')");
+            $result = $result->fetch_object();
+            return $result;
         }
     }
 ?>
