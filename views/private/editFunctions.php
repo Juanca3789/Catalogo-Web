@@ -202,15 +202,3 @@ else{
     window.location.assign(myUrl + "edit.php?mode=add")
 }
 
-function usPage() {
-    location.assign("./us.php")
-}
-
-function catalogPage(){
-    location.assign("./products.php")
-}
-
-function mainPage() {
-    location.assign("./index.php")
-}
-

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["rol"]) || $_SESSION["rol"] != "SELLER"){
+        header("Location: /catalogo/views/index.html");
+    }
+
+    header('Content-Type: application/javascript');
+?>
+
+
 const backend_url = "http://localhost/catalogo/Backend/"
 
 function base64ToBlob(base64, mimeType) {
@@ -10,7 +20,7 @@ function base64ToBlob(base64, mimeType) {
     return new Blob([byteArray], { type: mimeType });
 }
 
-function addFrontendCard(element){
+function addFrontendCard(element) {
     const main = document.getElementById("productsContainer")
     const container = document.createElement("div")
     container.className = "containerProduct"
@@ -58,43 +68,17 @@ function addFrontendCard(element){
 }
 
 async function getProducts() {
-    let callFunction = new FormData();
-    const parameters = new URLSearchParams(window.location.search)
-    const pattern = parameters.get("aBuscar");
-    let response = null;
-    if(pattern == null){
-        document.addEventListener("resourcesLoaded", () => {
-            const products = document.getElementById("productsButton");
-            products.disabled = true;
-        })
-        callFunction.append("call", "true");
-        response = await fetch(
-            backend_url + "Controllers/Productos/getProducts.php",
-            {
-                method: "POST",
-                mode: "cors",
-                cache: "no-cache",
-                body: callFunction
-            }
-        );
-    }
-    else{
-        callFunction.append("aBuscar", pattern);
-        response = await fetch(
-            backend_url + "Controllers/Productos/searchProducts.php",
-            {
-                method: "POST",
-                mode: "cors",
-                cache: "no-cache",
-                body: callFunction
-            }
-        )
-        const main = document.getElementById("textHeader");
-        const head = document.createElement("h2");
-        head.className = "searcHeader";
-        head.textContent = "Resultados para la busqueda: '" + pattern + "'";
-        main.appendChild(head);
-    }
+    const callFunction = new FormData()
+    callFunction.append("call", "true")
+    let response = await fetch(
+        backend_url + "Controllers/Productos/getProducts.php",
+        {
+            method: "POST",
+            mode: "no-cors",
+            cache: "no-cache",
+            body: callFunction
+        }
+    )
     json = await response.json()
     json.forEach(element => {
         addFrontendCard(element)

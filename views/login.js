@@ -14,13 +14,14 @@ async function loginSeller() {
     );
     json = await response.json()
     if(json.Rol == "SELLER"){
+        alert("Sesión iniciada correctamente")
         location.assign("./private/edit.php");
     }
     else if(json == "Usuario y contraseña incorrectos"){
-        console.log(json);
+        alert(json);
     }
     else if(json == "No es un vendedor"){
-        console.log(json);
+        alert("El usuario ingresado " + json);
     }
 }
 

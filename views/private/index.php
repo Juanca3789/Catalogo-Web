@@ -1,6 +1,7 @@
 <?php
-    session_start();
-    if(!isset($_SESSION["rol"]) || $_SESSION["rol"] != "SELLER"){
-        header("Location: /catalogo/views/index.html");
-    }
+    require_once __DIR__."../template/navBar.php";
+?>
+<script src="frontendPrivate.php"></script>
+<?php
+    require_once __DIR__."../template/footer.php";
 ?>

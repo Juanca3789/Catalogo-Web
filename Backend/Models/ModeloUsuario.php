@@ -8,12 +8,31 @@
             $this->connection = $this->connection->connect();
         }
         public function loginSeller(string $correo, string $clave){
-            $result = $this->connection->query("CALL loginSeller('{$correo}', '{$clave}');");
-            if($result != false){
-                $result = $result->fetch_object();
-                return $result;
+            $result = $this->connection->prepare("SELECT id, Correo, Rol FROM usuarios WHERE Correo = ? AND Password = ?");
+            if($result === false){
+                $errorObject = new stdClass();
+                $errorObject->error = $this->connection->error;
+                return $errorObject;
             }
-            return false;
+            $result->bind_param("ss", $correo, $clave);
+            $result->execute();
+            $result->store_result();
+            if($result->num_rows == 1){
+                $result->bind_result($id, $cor, $rol);
+                $result->fetch();
+                $user = new stdClass();
+                $user->id = $id;
+                $user->Correo = $cor;
+                $user->Rol = $rol;
+                $result->close();
+                return $user;
+            }
+            else {
+                $result->close();
+                $errorObject = new stdClass();
+                $errorObject->result = "Usuario o Contraseña incorrectos";
+                return $errorObject;
+            }
         }
     }
 ?>

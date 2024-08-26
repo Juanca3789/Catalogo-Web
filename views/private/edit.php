@@ -1,8 +1,5 @@
 <?php
-    session_start();
-    if(!isset($_SESSION["rol"]) || $_SESSION["rol"] != "SELLER"){
-        header("Location: /catalogo/views/index.html");
-    }
+    require_once __DIR__."../template/navBar.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,35 +10,6 @@
     <title>Editar Producto</title>
 </head>
 <body>
-    <ul class="navBar">
-        <li>
-            <button class="navBarButton MainPageButton" onclick="mainPage()">
-                Pagina Principal
-            </button>
-        </li>
-        <li>
-            <button class="navBarButton usButton" onclick="usPage()">
-                Nosotros
-            </button>
-        </li>
-        <li>
-            <button class="navBarButton catalogButton" onclick="catalogPage()" disabled>
-                Productos
-            </button>
-        </li>
-        <li>
-            <form action="" method="get" class="navBarSearch">
-                <div class="inputText">
-                    <input type="text" name="aBuscar" class="textSearch" placeholder="Buscar Productos" required disabled>
-                    <button type="submit" class="buttonSearch">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="iconSearch" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
-                    </button>
-                </div>
-            </form>
-        </li>
-    </ul>
     <div class="main">
         <form id="editProduct" class="editPage">
             <section class="preview">
@@ -78,24 +46,10 @@
             </section>
         </form>
     </div>
-    <footer class="footer">
-        <h2>
-            Nombre empresa
-        </h2>
-        <div class="info">
-            <p>
-                Nombre encargado
-            </p>
-            <p>
-                Numero telefono
-            </p>
-            <p>
-                Dirección
-            </p>
-            <p>Información adicional
-            </p>
-        </div>
-    </footer>
+<?php
+    require_once __DIR__."../template/footer.php";
+?>
 </body>
-<script src="privateFunctions.php"></script>
+<script src="editFunctions.php"></script>
+<script src="frontendPrivate.php"></script>
 </html>

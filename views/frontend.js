@@ -72,3 +72,41 @@ if (button != null) {
 } else {
     window.alert("No se detecta el botón")
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to fetch and update content
+    const fetchAndUpdate = (url, elementId) => {
+        return fetch(url, { cache: 'no-cache' })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            })
+            .catch(error => {
+                console.error(`Error fetching ${url}:`, error);
+            });
+    };
+
+    // Fetch nav and footer content concurrently
+    Promise.all([
+        fetchAndUpdate("./Common/nav.html", "nav"),
+        fetchAndUpdate("./Common/footer.html", "foot")
+    ])
+    .then(() => {
+        console.log("Nav and footer loaded.");
+        const event = new CustomEvent("resourcesLoaded")
+        document.dispatchEvent(event)
+    })
+    .catch(error => {
+        console.error("Error loading nav or footer:", error);
+    });
+});
+
+document.addEventListener("resourcesLoaded", () => {
+    const currentPage = location.pathname.split("/").pop();
+    if(currentPage == "index.html" || currentPage == ""){
+        document.getElementById("mainButton").disabled = true
+    }
+    else if(currentPage == "us.html"){
+        document.getElementById("usButton").disabled = true
+    }
+})
