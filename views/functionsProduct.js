@@ -48,11 +48,55 @@ function addFrontendCard(element){
     backPrice.textContent = "Precio: $ " + element.precio
     const unidades = document.createElement("span")
     unidades.textContent = "Unidades disponibles: " + element.cantidad
+    const formCart = document.createElement("form")
+    formCart.className = "cardButton"
+    const cantSelect = document.createElement("input")
+    cantSelect.name = "cantidad"
+    cantSelect.className = "cantSelect"
+    cantSelect.type = "number"
+    cantSelect.max = element.cantidad
+    cantSelect.min = 0
+    cantSelect.value = 0
+    if(element.cantidad != 0) {
+        cantSelect.value = 1
+    }
+    const addButton = document.createElement("button")
+    addButton.type = "submit"
+    addButton.className = "buttonBack"
+    addButton.textContent = "Añadir al carrito"
+    formCart.addEventListener(("keydown"), (e) => {
+        if(e.key == "Enter"){
+            e.preventDefault()
+        }
+    })
+    formCart.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const formData = new FormData(formCart)
+        if(sessionStorage.getItem(element.id) == null){
+            sessionStorage.setItem(element.id, formData.get("cantidad"))
+            alert("Producto añadido al carrito")
+        }
+        else{
+            const cantTotal = (sessionStorage.getItem(element.id) - 0) + (formData.get("cantidad") - 0)
+            if(cantTotal <= element.cantidad){
+                sessionStorage.setItem(element.id, cantTotal)
+                alert("Unidades sumadas al carrito")
+            }
+            else {
+                sessionStorage.setItem(element.id, element.cantidad)
+                alert("Ya tienes en el carrito el maximo de unidades disponibles")
+            }
+        }
+        displayNotifier()
+    })
+    formCart.appendChild(addButton)
+    formCart.appendChild(cantSelect)
     back.appendChild(backName)
     back.appendChild(descTitle)
     back.appendChild(description)
     back.appendChild(backPrice)
     back.appendChild(unidades)
+    back.appendChild(formCart)
     container.appendChild(back)
     main.appendChild(container)
 }

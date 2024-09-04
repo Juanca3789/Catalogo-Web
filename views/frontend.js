@@ -10,6 +10,26 @@ function mainPage() {
     location.assign("./index.html")
 }
 
+function cartPage() {
+    location.assign("./cart.html")
+}
+
+function displayNotifier(){
+    const notifier = document.getElementById("notifier")
+    if(sessionStorage.length != 0){
+        if(notifier != null){
+            notifier.style.display = "block"
+            notifier.textContent = sessionStorage.length
+        }
+    }
+    else{
+        if(notifier != null){
+            notifier.style.display = "none"
+        }
+    }
+}
+
+displayNotifier()
 desplegableActive = false
 let telephoneNumber, whatsapp, tienda
 const button = document.getElementById("contacto")

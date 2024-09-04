@@ -58,11 +58,25 @@ function addFrontendCard(element) {
     backPrice.textContent = "Precio: $ " + element.precio
     const unidades = document.createElement("span")
     unidades.textContent = "Unidades disponibles: " + element.cantidad
+    const contButton = document.createElement("section")
+    contButton.className = "cardButton"
+    const editButton = document.createElement("button")
+    editButton.textContent = "Editar"
+    editButton.className = "buttonBack"
+    const addInventor = document.createElement("button")
+    addInventor.textContent = "Añadir inventario"
+    addInventor.className = "buttonBack"
+    editButton.addEventListener("click", () => {
+        location.assign("./edit.php?mode=edit&id=" + element.id)
+    })
+    contButton.appendChild(editButton)
+    contButton.appendChild(addInventor)
     back.appendChild(backName)
     back.appendChild(descTitle)
     back.appendChild(description)
     back.appendChild(backPrice)
     back.appendChild(unidades)
+    back.appendChild(contButton)
     container.appendChild(back)
     main.appendChild(container)
 }

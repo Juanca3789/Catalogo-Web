@@ -31,10 +31,12 @@ body{
 
 .navBarButton:hover{
     background-color: gray;
+    cursor: pointer;
 }
 
 .navBarButton:disabled{
     background-color: slategrey;
+    cursor: default;
 }
 
 li{
@@ -61,6 +63,11 @@ li{
     align-items: center;
     justify-content: center;
     margin-right: 5px;
+}
+
+.buttonSearch:hover{
+    cursor: pointer;
+    background-color: #efefef;
 }
 
 .iconSearch{
@@ -136,6 +143,11 @@ li{
     transition: all 200ms;
 }
 
+.contacto:hover{
+    cursor: pointer;
+    background-color: rgb(27, 137, 27);
+}
+
 .contacto:active{
     opacity: 0%;
 }
@@ -205,10 +217,11 @@ li{
 }
 
 .back{
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: space-evenly;
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -400,4 +413,135 @@ li{
 
 .searcHeader{
     margin-left: 8%;
+}
+
+.cardButton{
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.buttonBack{
+    border-color: transparent;
+    background-color: #16a8d4;
+    color: white;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+}
+
+.titleVP{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+}
+
+.cantSelect{
+    width: 44px;
+}
+
+.cart{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-color: transparent;
+    border-width: 1px;
+    background-color: #1648d4;
+    position:fixed;
+    bottom: 30px;
+    left: 30px;
+    transition: all 200ms;
+}
+
+.cart:hover{
+    background-color: #092a57;
+    cursor: pointer;
+}
+
+.notifier{
+    display: none;
+    background-color: red;
+    border-radius: 50%;
+    border-color: transparent;
+    width: 16px;
+    height: 16px;
+    position: fixed;
+    transform: translateX(-8px) translateY(-36px);
+    color: white;
+    font-size: 8pt;
+    font-weight: bold;
+    line-height: 16px;
+}
+
+.cartProducts{
+    min-width: 360px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: gray solid 1px;
+}
+
+.cartProduct{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.prodInfo{
+    display: flex;
+    align-items: center;
+}
+
+.cartImage{
+    border-radius: 10px;
+    border-color: #000;
+    margin-right: 10px;
+}
+
+.total{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: end;
+}
+
+.subTotal{
+    border: gray solid 1px;
+    border-radius: 15px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.formPay{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.inputPay{
+    min-width: 85%;
+    height: 18px;
+    padding: 3px;
 }

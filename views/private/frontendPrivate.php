@@ -41,3 +41,14 @@ async function closeSession() {
         location.assign("../index.html")
     }
 }
+
+const currentPage = location.pathname.split("/").pop();
+if(currentPage == "index.php" || currentPage == ""){
+    document.getElementById("mainButton").disabled = true
+}
+else if(currentPage == "us.php"){
+    document.getElementById("usButton").disabled = true
+}
+else if(currentPage == "products.php"){
+    document.getElementById("productsButton").disabled = true
+}
