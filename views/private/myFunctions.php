@@ -66,6 +66,26 @@ function addFrontendCard(element) {
     const addInventor = document.createElement("button")
     addInventor.textContent = "Añadir inventario"
     addInventor.className = "buttonBack"
+    addInventor.addEventListener("click", () => {
+        const modals = document.getElementsByClassName("modal")
+        const overlay = document.getElementById("overlay")
+        for(let i = 0; i < modals.length; i++){
+            modals.item(i).style.display = "flex"
+        }
+        overlay.style.display = "block"
+        for(let i = 0; i < modals.length; i++){
+            modals.item(i).addEventListener("submit", (e) => {
+                e.preventDefault()
+                addInventory(element.id).then(
+                    () => {
+                        modals.item(i).style.display = "none"
+                        overlay.style.display = "none"
+                        location.reload()
+                    }
+                )
+            })
+        }
+    })
     editButton.addEventListener("click", () => {
         location.assign("./edit.php?mode=edit&id=" + element.id)
     })
@@ -97,4 +117,33 @@ async function getProducts() {
     json.forEach(element => {
         addFrontendCard(element)
     });
+}
+
+const closeModal = document.getElementById("closeModal");
+closeModal.addEventListener("click", () => {
+    const modals = document.getElementsByClassName("modal")
+    const overlay = document.getElementById("overlay")
+    for(let i = 0; i < modals.length; i++){
+        modals.item(i).style.display = "none"
+    }
+    overlay.style.display = "none"
+})
+
+async function addInventory(id) {
+    let formInventory = document.getElementById("inventoryForm")
+    const formDat = new FormData(formInventory)
+    formDat.append("id", id)
+    let response = await fetch(
+        backend_url + "Controllers/Productos/addInventory.php",
+        {
+            method : "POST",
+            mode : "cors",
+            cache : "no-cache",
+            body : formDat
+        }
+    )
+    json = await response
+    if(json){
+        alert("Productos añadidos correctamente")
+    }
 }

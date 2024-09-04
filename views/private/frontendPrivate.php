@@ -11,16 +11,8 @@ if (typeof backend_url === 'undefined') {
     const backend_url = "http://localhost/catalogo/Backend/"
 }
 
-function usPage() {
-    location.assign("./us.php")
-}
-
 function catalogPage(){
     location.assign("./products.php")
-}
-
-function mainPage() {
-    location.assign("./index.php")
 }
 
 async function closeSession() {

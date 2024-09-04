@@ -6,16 +6,6 @@
 ?>
 <ul class="navBar">
     <li>
-        <button class="navBarButton MainPageButton" id="mainButton" onclick="mainPage()">
-            Pagina Principal
-        </button>
-    </li>
-    <li>
-        <button class="navBarButton usButton" id="usButton" onclick="usPage()">
-            Nosotros
-        </button>
-    </li>
-    <li>
         <button class="navBarButton catalogButton" id="productsButton" onclick="catalogPage()">
             Productos
         </button>

@@ -48,5 +48,12 @@
             }
             return $result;
         }
+        public function addInventory(int $pid, int $addedQuantity) {
+            $result = $this->connection->multi_query("SELECT @cantidad := cantidad FROM productos WHERE id = {$pid}; UPDATE `productos` SET `cantidad`= (@cantidad + {$addedQuantity}) WHERE id = {$pid};");
+            if($result){
+                return "Unidades añadidas al inventario";
+            }
+            return "Ha ocurrido un error";
+        }
     }
 ?>
