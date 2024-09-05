@@ -131,6 +131,8 @@ if(mode == "add"){
             window.alert("No has seleccionado una imagen")
         }
     })
+    const head = document.getElementById("header")
+    head.textContent = "Añadiendo Producto"
 }
 else if(mode == "edit"){
     const form = document.getElementById("editProduct")

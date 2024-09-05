@@ -398,6 +398,9 @@ li{
         width: 50%;
         height: 24px;
     }
+    button:hover{
+        background-color: #2753cc;
+    }
 }
 
 .login{
@@ -558,16 +561,14 @@ button:hover{
     border: #000 solid;
     border-radius: 10px;
     padding: 20px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    position: fixed;
+    left: 5%;
+    top: 35%;
     margin: auto;
-    height: 150px;
+    height: auto;
     background-color: white;
-    min-width: 650px;
-    width: 650px;
+    min-width: 80%;
+    width: 80%;
     display: none;
     z-index: 2;
     align-items:start;
@@ -588,4 +589,58 @@ button:hover{
 .closeModal{
     border: none;
     background-color: white;
+}
+
+.add{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border-color: transparent;
+    border-width: 1px;
+    background-color: #1648d4;
+    position:fixed;
+    bottom: 30px;
+    left: 30px;
+    transition: all 200ms;
+}
+
+.add span{
+    opacity: 1;
+    transition: all 200ms;
+}
+
+.add:hover{
+    background-color: #092a57;
+    cursor: pointer;
+    width: 150px;
+}
+
+.add::after {
+    content: "Añadir producto";
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.add:hover::after {
+    opacity: 1;
+}
+
+.add:hover span{
+    opacity: 0;
+}
+
+.pswd{
+    width: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+        width: 40px;
+    }
 }

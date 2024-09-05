@@ -42,7 +42,7 @@
             </section>
             </section>
             <section class="sectionInput">
-                <h2 class="pr">Editando Producto</h2>
+                <h2 class="pr" id="header">Editando Producto</h2>
                 <section>
                     <h4 class="pr">Nombre:</h6>
                     <input name="nombre" id="name" type="text" placeholder="Nombre" class="formEditText" autocomplete="off" required>

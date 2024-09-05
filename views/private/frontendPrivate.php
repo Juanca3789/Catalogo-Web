@@ -34,6 +34,10 @@ async function closeSession() {
     }
 }
 
+function addPage(){
+    location.assign("./edit.php")
+}
+
 const currentPage = location.pathname.split("/").pop();
 if(currentPage == "index.php" || currentPage == ""){
     document.getElementById("mainButton").disabled = true

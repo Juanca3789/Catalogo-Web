@@ -1,5 +1,6 @@
 const formLogin = document.getElementById("loginForm");
 const backend_url = "http://localhost/catalogo/Backend/"
+let isShowed = false
 
 async function loginSeller() {
     let formContent = new FormData(formLogin);
@@ -23,6 +24,17 @@ async function loginSeller() {
     else if(json == "No es un vendedor"){
         alert("El usuario ingresado " + json);
     }
+}
+
+function showPassword(){
+    const campo = document.getElementById("password")
+    if(isShowed){
+        campo.type = "password"
+    }
+    else{
+        campo.type = "text"
+    }
+    isShowed = !isShowed
 }
 
 if(formLogin != null){
