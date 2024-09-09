@@ -11,17 +11,18 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
-    - name: Install FTP client
-      run: sudo apt-get install ftp
-
-    - name: Deploy via FTP
-      run: |
-        ftp -inv ${{ secrets.FTP_HOST }} <<EOF
-        user ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }}
-        cd /htdocs
-        lcd .
-        mput *
-        bye
-        EOF
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        ftp-server: ${{ secrets.FTP_HOST }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /htdocs
+        exclude: |
+          **/.git*
+          **/.github*
+          **/README.md
+        delete: true
