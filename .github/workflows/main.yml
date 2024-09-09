@@ -23,7 +23,7 @@ jobs:
         local-dir: ./
         server-dir: /htdocs/
         exclude: |
-          **/.git
-          **/.github
+          **/.git/**/*
+          **/.github/**/*
           **/README.md
         dangerous-clean-slate: true
