@@ -45,7 +45,7 @@ function addCartCard(element, cantidad){
     productName.textContent = element.nombre
     const unitPrice = document.createElement("h5")
     unitPrice.className = "pr"
-    unitPrice.textContent = "Precio Unitario: "+ element.precio
+    unitPrice.textContent = "Precio Unitario: $"+ element.precio
     const unities = document.createElement("h6")
     unities.className = "pr"
     unities.textContent = "Unidades Disponibles: " + element.cantidad
@@ -123,3 +123,30 @@ async function getProduct(id, cantidad) {
     json = await response.json()
     addCartCard(json, cantidad)
 }
+
+const payForm = document.getElementById("formPay")
+payForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const formData = new FormData(payForm)
+    let message = "Hola!, quiero realizar un pedido: \n"
+    total = 0
+    const cartElements = document.getElementsByClassName("cartProduct")
+    for (let i = 0; i < cartElements.length; i++) {
+        const element = cartElements[i];
+        const nombreProducto = element.childNodes[0].childNodes[1].childNodes[0].textContent
+        const precioUnitario = element.childNodes[0].childNodes[1].childNodes[1].textContent.replace("Precio Unitario: $", "")
+        const cantidad = element.childNodes[1].childNodes[2].childNodes[0].value
+        message += `${nombreProducto} - ${cantidad} x $${precioUnitario}\n`
+        total += precioUnitario * cantidad
+    }
+    message += `\nTotal: $${total} \n`
+    message += `Mi nombre es: ${formData.get("nombreClient")}\n`
+    message += `Mi dirección es: ${formData.get("dirClient")}\n`
+    message += "Muchas gracias!"
+    payForm.reset()
+    sessionStorage.clear()
+    alert("Serás redirigido a whatsapp para finalizar tu compra\nMuchas gracias por preferirnos!")
+    const whatsappUrl = `https://wa.me/573143024438?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank')
+    location.assign("./index.html")
+})
