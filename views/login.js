@@ -1,5 +1,5 @@
 const formLogin = document.getElementById("loginForm");
-const backend_url = "http://localhost/catalogo/Backend/"
+const backend_url = "https://www.tiendaonlinema.000.pe/Backend/"
 let isShowed = false
 
 async function loginSeller() {
@@ -8,7 +8,7 @@ async function loginSeller() {
         backend_url + "Controllers/Usuarios/loginSeller.php",
         {
             method: "POST",
-            mode: "cors",
+            mode: "no-cors",
             cache: "no-cache",
             body: formContent
         }

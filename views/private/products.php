@@ -1,6 +1,3 @@
-<?php
-    require_once __DIR__."../template/navBar.php";
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +7,9 @@
     <title>Gestion de Productos</title>
 </head>
 <body onload="getProducts()">
+    <?php
+        require_once __DIR__."/template/navBar.php";
+    ?>
     <div class="spinnerDiv" id="loading-spinner">
         <div class="spinner"></div>
     </div>
@@ -21,7 +21,7 @@
                 <h2 class="pr">
                     Añadir inventario de productos
                 </h2>
-                <h3>
+                <h3 id = "modalInventory">
                     Inventario actual:
                 </h3>
                 <h3>
@@ -51,9 +51,9 @@
         </span>
     </button>
     <?php
-        require_once __DIR__."../template/footer.php";
+        require_once __DIR__."/template/footer.php";
     ?>
 </body>
-<script src="myFunctions.php"></script>
-<script src="frontendPrivate.php"></script>
+<script src="myFunctions.js"></script>
+<script src="frontendPrivate.js"></script>
 </html>

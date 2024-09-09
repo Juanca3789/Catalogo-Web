@@ -1,4 +1,4 @@
-const backend_url = "http://localhost/catalogo/Backend/"
+const backend_url = "https://www.tiendaonlinema.000.pe/Backend/"
 
 function base64ToBlob(base64, mimeType) {
     const byteCharacters = atob(base64);
