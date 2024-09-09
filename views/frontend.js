@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchAndUpdate("./Common/footer.html", "foot")
     ])
     .then(() => {
-        console.log("Nav and footer loaded.");
         const event = new CustomEvent("resourcesLoaded")
         document.dispatchEvent(event)
     })
