@@ -16,7 +16,7 @@ async function loginSeller() {
     json = await response.json()
     if(json.Rol == "SELLER"){
         alert("Sesión iniciada correctamente")
-        location.assign("./private/index.php");
+        location.assign("./private/products.php");
     }
     else if(json == "Usuario y contraseña incorrectos"){
         alert(json);

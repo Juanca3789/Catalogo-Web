@@ -10,6 +10,9 @@
     <title>Gestion de Productos</title>
 </head>
 <body onload="getProducts()">
+    <div class="spinnerDiv" id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
     <div class="main" id="productsContainer"></div>
     <div id="overlay"></div>
     <div class="modal">

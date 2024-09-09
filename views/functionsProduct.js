@@ -140,6 +140,8 @@ async function getProducts() {
         main.appendChild(head);
     }
     json = await response.json()
+    const spinner = document.getElementById("loading-spinner")
+    spinner.style.display = "none"
     json.forEach(element => {
         addFrontendCard(element)
     });
