@@ -1,0 +1,27 @@
+name: Deploy to InfiniteFree
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install FTP client
+      run: sudo apt-get install ftp
+
+    - name: Deploy via FTP
+      run: |
+        ftp -inv ${{ secrets.FTP_HOST }} <<EOF
+        user ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }}
+        cd /htdocs
+        lcd .
+        mput *
+        bye
+        EOF
