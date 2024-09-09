@@ -75,7 +75,7 @@ function changeInformationValue(idInput, value){
 }
 
 let frontPreviewActive = true
-const myUrl = "https://www.tiendaonlinema.000.pe/Views/private/"
+const myUrl = "https://www.tiendaonlinema.000.pe/views/private/"
 const parameters = new URLSearchParams(window.location.search);
 const mode = parameters.get("mode")
 const backend_url = "https://www.tiendaonlinema.000.pe/Backend/"
