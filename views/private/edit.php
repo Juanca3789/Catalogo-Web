@@ -63,6 +63,6 @@
         require_once __DIR__."../template/footer.php";
     ?>
 </body>
-<script src="editFunctions.php"></script>
-<script src="frontendPrivate.php"></script>
+<script src="editFunctions.js"></script>
+<script src="frontendPrivate.js"></script>
 </html>

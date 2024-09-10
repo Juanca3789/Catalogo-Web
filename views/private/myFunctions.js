@@ -56,6 +56,9 @@ function addFrontendCard(element) {
     const addInventor = document.createElement("button")
     addInventor.textContent = "Añadir inventario"
     addInventor.className = "buttonBack"
+    const deleteInventory = document.createElement("button")
+    deleteInventory.textContent = "Eliminar inventario"
+    deleteInventory.classList = "buttonBack Red"
     addInventor.addEventListener("click", () => {
         const modals = document.getElementsByClassName("modal")
         const overlay = document.getElementById("overlay")
@@ -79,8 +82,32 @@ function addFrontendCard(element) {
     editButton.addEventListener("click", () => {
         location.assign("./edit.php?mode=edit&id=" + element.id)
     })
+    deleteInventory.addEventListener("click", () => {
+        const modals = document.getElementsByClassName("modalDelete")
+        const overlay = document.getElementById("overlay")
+        for(let i = 0; i < modals.length; i++){
+            modals.item(i).style.display = "flex"
+        }
+        overlay.style.display = "block"
+        for(let i = 0; i < modals.length; i++){
+            modals.item(i).addEventListener("submit", (e) => {
+                e.preventDefault()
+                deleteInventor(element.id).then(
+                    () => {
+                        modals.item(i).style.display = "none"
+                        overlay.style.display = "none"
+                        location.reload()
+                    }
+                )
+            })
+        }
+    })
+    const buttonDiv = document.createElement("section")
+    buttonDiv.className = "buttonDiv"
+    buttonDiv.appendChild(addInventor)
+    buttonDiv.appendChild(deleteInventory)
     contButton.appendChild(editButton)
-    contButton.appendChild(addInventor)
+    contButton.appendChild(buttonDiv)
     back.appendChild(backName)
     back.appendChild(descTitle)
     back.appendChild(description)
@@ -120,6 +147,15 @@ closeModal.addEventListener("click", () => {
     }
     overlay.style.display = "none"
 })
+const closeModalDelete = document.getElementById("closeModalDelete");
+closeModalDelete.addEventListener("click", () => {
+    const modals = document.getElementsByClassName("modalDelete")
+    const overlay = document.getElementById("overlay")
+    for(let i = 0; i < modals.length; i++){
+        modals.item(i).style.display = "none"
+    }
+    overlay.style.display = "none"
+})
 
 async function addInventory(id) {
     let formInventory = document.getElementById("inventoryForm")
@@ -137,5 +173,24 @@ async function addInventory(id) {
     json = await response
     if(json){
         alert("Productos añadidos correctamente")
+    }
+}
+
+async function deleteInventor(id) {
+    let formInventory = document.getElementById("inventoryDelete")
+    const formDat = new FormData(formInventory)
+    formDat.append("id", id)
+    let response = await fetch(
+        backend_url + "Controllers/Productos/removeInventory.php",
+        {
+            method : "POST",
+            mode : "cors",
+            cache : "no-cache",
+            body : formDat
+        }
+    )
+    json = await response
+    if(json){
+        alert("Productos eliminados correctamente")
     }
 }

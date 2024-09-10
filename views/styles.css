@@ -666,3 +666,35 @@ button:hover{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.elim{
+    color: red;
+}
+
+.modalDelete {
+    border: #000 solid;
+    border-radius: 10px;
+    padding: 20px;
+    position: fixed;
+    left: 5%;
+    top: 35%;
+    margin: auto;
+    height: auto;
+    background-color: white;
+    min-width: 80%;
+    width: 80%;
+    display: none;
+    z-index: 2;
+    align-items:start;
+    justify-content: space-evenly;
+}
+
+.Red{
+    background-color: red;
+}
+
+.buttonDiv{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
