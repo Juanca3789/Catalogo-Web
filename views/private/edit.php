@@ -33,7 +33,7 @@
                         </section>
                     </section>
                     <section class="imageSelector" id="imageSelector">
-                        <img id="previewImage" src="../../Assets/descarga.jpg" class="img">
+                        <img id="previewImage" src="../../Assets/descarga.jpg" class="img" width="270px" height="145px">
                         <h3 class="pr" id="previewName">Nombre Producto</h3>
                         <h3 class="pr" id="previewPrecio">Precio</h3>
                         <label for="file-upload" class="fakeFile">Seleccionar Imagen</label>
