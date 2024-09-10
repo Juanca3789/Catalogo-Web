@@ -106,6 +106,8 @@ function getCart(){
         const key = sessionStorage.key(i)
         getProduct(key, sessionStorage.getItem(key));
     }
+    const spinner = document.getElementById("loading-spinner")
+    spinner.style.display = "none"
 }
 
 async function getProduct(id, cantidad) {

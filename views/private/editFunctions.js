@@ -28,9 +28,27 @@ function imageUpdate() {
         if(archivo){
             const lector = new FileReader()
             lector.onload = (e) => {
-                previewImage.src = e.target.result
-                base64Selected = e.target.result
+                const img = new Image();
+                img.onload = (e) => {
+                    const canvas = document.createElement("canvas")
+                    const ctx = canvas.getContext("2d")
+                    const maxHeight = 163
+                    const scaleSize = maxHeight / img.height
+                    canvas.width = img.width * scaleSize
+                    canvas.height = maxHeight
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+                    const base64 = canvas.toDataURL("image/webp", 0.5)
+                    base64Selected = base64
+                    previewImage.src = base64
+                }
+                img.onerror = () => {
+                    console.error("Error al cargar la imagen");
+                };
+                img.src = e.target.result
             }
+            lector.onerror = () => {
+                console.error("Error al leer el archivo");
+            };
             lector.readAsDataURL(archivo)
         }
     })

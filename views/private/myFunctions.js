@@ -26,6 +26,8 @@ function addFrontendCard(element) {
     img.src = imageUrl
     img.onload = () => {URL.revokeObjectURL(imageUrl)}
     img.className = "img"
+    img.width = 270
+    img.height = 145
     const name = document.createElement("h3")
     name.className = "pr"
     name.textContent = element.nombre
