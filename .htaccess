@@ -3,3 +3,5 @@ RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^tiendaonlinema\.000\.pe [NC]
+RewriteRule ^(.*)$ https://www.tiendaonlinema.000.pe/views/index.html [L,R=301]
