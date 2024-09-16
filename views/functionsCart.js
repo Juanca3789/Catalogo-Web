@@ -101,10 +101,10 @@ function addCartCard(element, cantidad){
     updateSub()
 }
 
-function getCart(){
+async function getCart(){
     for (let i = 0; i < sessionStorage.length; i++) {
         const key = sessionStorage.key(i)
-        getProduct(key, sessionStorage.getItem(key));
+        await getProduct(key, sessionStorage.getItem(key));
     }
     const spinner = document.getElementById("loading-spinner")
     spinner.style.display = "none"
