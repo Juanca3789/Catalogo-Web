@@ -144,7 +144,12 @@ async function getProducts() {
     json = await response.json()
     const spinner = document.getElementById("loading-spinner")
     spinner.style.display = "none"
-    json.forEach(element => {
-        addFrontendCard(element)
-    });
+    if(!json.Error){
+        json.forEach(element => {
+            addFrontendCard(element)
+        });
+    }
+    else {
+        alert(json.Error)
+    }
 }

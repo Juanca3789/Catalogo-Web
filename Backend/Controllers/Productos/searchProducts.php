@@ -9,7 +9,9 @@
                 echo json_encode($productController);
             }
             else{
-                echo "Error";
+                $objetoError = new stdClass;
+                $objetoError->Error = "No se han encontrado productos";
+                echo json_encode($objetoError);
             }
         }
     }

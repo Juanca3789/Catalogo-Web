@@ -8,7 +8,9 @@
                 echo json_encode($productController);
             }
             else{
-                echo "Error";
+                $objetoError = new stdClass;
+                $objetoError->Error = "Ha ocurrido un error obteniendo los productos";
+                echo json_encode($objetoError);
             }
         }
     }
